@@ -1,4 +1,4 @@
-image: openjdk:21-rc-jdk
+image: openjdk:21-ea-31-jdk-slim-bookworm
 
 stages:
   - build
