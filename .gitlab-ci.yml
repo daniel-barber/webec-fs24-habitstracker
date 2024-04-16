@@ -1,8 +1,6 @@
-image: jdk:21
-
 stages:
   - build
-  - test  # Uncommented test stage
+  - test
 
 cache:
   paths:
@@ -14,9 +12,11 @@ before_script:
 build:
   stage: build
   script:
-    - gradle build
+    - docker pull adoptium/temurin:21-jre  # Download Oracle OpenJDK 21 image (without compiler)
+    - docker run --rm adoptium/temurin:21-jre gradle build
 
 test:
   stage: test
   script:
-    - gradle test
+    - docker pull adoptium/temurin:21-jre  # Download Oracle OpenJDK 21 image (without compiler)
+    - docker run --rm adoptium/temurin:21-jre gradle test
