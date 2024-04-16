@@ -1,24 +1,7 @@
 stages:
   - build
-  - test
- # - deploy  # (Optional)
 
 build:
   stage: build
-  image: openjdk:21-jdk  # Use same image as Dockerfile
   script:
-    - cd app
-    - ./gradlew clean build  # Assuming gradle wrapper is used
-
-test:
-  stage: test
-  image: openjdk:21-jdk  # Use same image for tests
-  script:
-    - cd app
-    - ./gradlew test  # Assuming your tests are configured in Gradle
-
-#deploy:  # (Optional)
-#  stage: deploy
-#  script:
-#    - echo "Deployment Logic"  # Replace with your deployment steps
-
+    - gradle clean install
