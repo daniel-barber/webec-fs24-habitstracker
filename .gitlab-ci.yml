@@ -1,3 +1,5 @@
+image: jdk:21
+
 stages:
   - build
   - test  # Uncommented test stage
