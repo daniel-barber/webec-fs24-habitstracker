@@ -1,23 +1,24 @@
 stages:
   - build
   - test
-
-cache:
-  paths:
-    - ~/.gradle/caches
-
-before_script:
-  - apk add --update ca-certificates  # Optional, ensures certificate validation for downloading dependencies
+ # - deploy  # (Optional)
 
 build:
   stage: build
+  image: adoptium/temurin:21-slim  # Use same image as Dockerfile
   script:
-    - docker pull eclipse-temurin:21-jdk
-    - docker run --rm eclipse-temurin:21-j gradle clean
-    - docker run --rm eclipse-temurin:21-j gradle build
+    - cd app
+    - ./gradlew clean build  # Assuming gradle wrapper is used
 
 test:
   stage: test
+  image: adoptium/temurin:21-slim  # Use same image for tests
   script:
-    - docker pull eclipse-temurin:21-j
-    - docker run --rm eclipse-temurin:21-j gradle test
+    - cd app
+    - ./gradlew test  # Assuming your tests are configured in Gradle
+
+#deploy:  # (Optional)
+#  stage: deploy
+#  script:
+#    - echo "Deployment Logic"  # Replace with your deployment steps
+
