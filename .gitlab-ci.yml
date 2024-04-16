@@ -1,6 +1,10 @@
 stages:
   - build
 
+before_script:
+  - apt-get update -qy
+  - apt-get install -y gradle
+
 build:
   stage: build
   script:
