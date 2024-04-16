@@ -3,11 +3,6 @@ image: openjdk:21-ea-31-jdk-slim-bookworm
 stages:
   - build
 
-before_script:
-  - apk update
-  - apk add gradle
-
-
 build:
   stage: build
   script:
