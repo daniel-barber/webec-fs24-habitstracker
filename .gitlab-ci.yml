@@ -12,12 +12,12 @@ before_script:
 build:
   stage: build
   script:
-    - docker pull adoptium/temurin:17-jre  # Download Oracle OpenJDK 17 image
-    - docker run --rm adoptium/temurin:17-jre gradle clean
-    - docker run --rm adoptium/temurin:17-jre gradle build
+    - docker pull eclipse-temurin:21-jdk
+    - docker run --rm eclipse-temurin:21-j gradle clean
+    - docker run --rm eclipse-temurin:21-j gradle build
 
 test:
   stage: test
   script:
-    - docker pull adoptium/temurin:17-jre  # Download Oracle OpenJDK 17 image
-    - docker run --rm adoptium/temurin:17-jre gradle test
+    - docker pull eclipse-temurin:21-j
+    - docker run --rm eclipse-temurin:21-j gradle test
