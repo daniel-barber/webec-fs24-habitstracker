@@ -1,7 +1,6 @@
 stages:
   - build
- ## - test
- ## - deploy
+  - test  # Uncommented test stage
 
 cache:
   paths:
@@ -13,16 +12,9 @@ before_script:
 build:
   stage: build
   script:
-    - docker pull adoptium/temurin:21-jre  # Download Oracle OpenJDK 21 image
-    - docker run --rm adoptium/temurin:21-jre gradle build
+    - gradle build
 
 test:
   stage: test
   script:
-    - docker pull adoptium/temurin:21-jre  # Download Oracle OpenJDK 21 image
-    - docker run --rm adoptium/temurin:21-jre gradle test
-
-##deploy:
-##  stage: deploy
-##  script: echo "Define your deployment script!"
-##  environment: production
+    - gradle test
