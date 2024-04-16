@@ -1,4 +1,4 @@
-image: java:8
+image: openjdk:21-slim  # Use OpenJDK 21 for compatibility
 
 stages:
   - build
@@ -6,7 +6,7 @@ stages:
 
 build:
   stage: build
-  script: ./mvnw package
+  script: ./gradlew build  # Assuming Gradle wrapper is present
   artifacts:
     paths:
-      - target/demo-0.0.1-SNAPSHOT.jar
+      - build/libs/*.jar      # Adjust path based on your Gradle project structure
