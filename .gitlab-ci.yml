@@ -2,8 +2,9 @@ stages:
   - build
 
 before_script:
-  - apt-get update -qy
-  - apt-get install -y gradle
+  - apk update
+  - apk add gradle
+
 
 build:
   stage: build
