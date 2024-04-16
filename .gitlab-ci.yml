@@ -1,7 +1,7 @@
 image: jdk:21
 
 stages:
- ## - build
+  - build
  ## - test
  ## - deploy
 
