@@ -5,14 +5,14 @@ stages:
 
 build:
   stage: build
-  image: adoptium/temurin:21-slim  # Use same image as Dockerfile
+  image: openjdk:21-jdk  # Use same image as Dockerfile
   script:
     - cd app
     - ./gradlew clean build  # Assuming gradle wrapper is used
 
 test:
   stage: test
-  image: adoptium/temurin:21-slim  # Use same image for tests
+  image: openjdk:21-jdk  # Use same image for tests
   script:
     - cd app
     - ./gradlew test  # Assuming your tests are configured in Gradle
