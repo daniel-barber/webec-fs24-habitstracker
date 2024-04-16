@@ -1,3 +1,5 @@
+image: openjdk:17-jdk-alpine
+
 stages:
   - build
 
