@@ -1,4 +1,4 @@
-image: openjdk:17-jdk-alpine
+image: openjdk:21-rc-jdk
 
 stages:
   - build
