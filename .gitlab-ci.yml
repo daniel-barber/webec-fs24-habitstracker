@@ -7,17 +7,17 @@ cache:
     - ~/.gradle/caches
 
 before_script:
-    - apk add --update gradle
-    - gradle clean
+  - apk add --update ca-certificates  # Optional, ensures certificate validation for downloading dependencies
 
 build:
   stage: build
   script:
-    - docker pull adoptium/temurin:21-jre  # Download Oracle OpenJDK 21 image (without compiler)
-    - docker run --rm adoptium/temurin:21-jre gradle build
+    - docker pull adoptium/temurin:17-jre  # Download Oracle OpenJDK 17 image
+    - docker run --rm adoptium/temurin:17-jre gradle clean
+    - docker run --rm adoptium/temurin:17-jre gradle build
 
 test:
   stage: test
   script:
-    - docker pull adoptium/temurin:21-jre  # Download Oracle OpenJDK 21 image (without compiler)
-    - docker run --rm adoptium/temurin:21-jre gradle test
+    - docker pull adoptium/temurin:17-jre  # Download Oracle OpenJDK 17 image
+    - docker run --rm adoptium/temurin:17-jre gradle test
