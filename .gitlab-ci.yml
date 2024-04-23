@@ -30,11 +30,11 @@ test:
 # 5. Configure HEROKU_API_KEY and HEROKU_APP_NAME in GitLab repository: -> Settings -> CI/CD -> Variables (https://docs.gitlab.com/ee/ci/examples/deployment/#storing-api-keys)
 # 6. Uncomment the following configuration from "deploy" on
 # 7. Enjoy: https://<heroku-app-name>.herokuapp.com/
-#deploy:
-#    image: ruby:latest
-#    stage: deploy
-#    script:
-#        - gem install dpl
-#        - dpl --provider=heroku --app=$HEROKU_APP_NAME --api_key=$HEROKU_API_KEY
-#    only:
-#        - main
+deploy:
+    image: ruby:latest
+    stage: deploy
+    script:
+        - gem install dpl
+        - dpl --provider=heroku --app=$HEROKU_APP_NAME --api_key=$HEROKU_API_KEY
+    only:
+        - main
