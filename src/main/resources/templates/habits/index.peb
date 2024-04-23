@@ -5,7 +5,8 @@
 
     {% for habit in habits %}
     <div class="habits_list">
-        <h2 class="habits_title">{{ habit.name }}
+        <h2 class="habits_title">
+            <a href="{{ href('/habit/' + habit.id) }}" class="link">{{ habit.name }}</a>
         </h2>
     </div>
     {% endfor %}

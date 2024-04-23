@@ -10,7 +10,7 @@ public interface HabitRepository extends JpaRepository<Habit, Integer> {
 
     @Query("""
             SELECT DISTINCT habit FROM Habit habit
-            INNER JOIN habit.name name
+           
         """)
     List<Habit> findBySearch(@Param("search") String search);
 
