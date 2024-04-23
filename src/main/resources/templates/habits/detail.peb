@@ -1,0 +1,10 @@
+{# @pebvariable name="habit" type="ch.fhnw.webec.exercise.model.Habit" #}
+
+{% extends "../layout/default" %}
+{% block title %}{{ habit.name }}{% endblock %}
+{% block content %}
+    <h1>{{ habit.name }}</h1>
+    <p>{{ habit.description }}</p>
+    <button class="bnt">Add Log</button>
+
+{% endblock %}

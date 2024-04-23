@@ -1,7 +1,38 @@
+:root{
+    --primary-color: #2c3e50;
+    --secondary-color: #16a085;
+    --background-color: #ecf0f1;
+    --error-color: #e74c3c;
+    --font-family: "Plus Jakarta Sans" , sans-serif;
+    --base-space: 0.8rem;
+    --small-space: 0.4rem;
+    --border-radius: 0.4rem;
+}
+
+/*General*/
+
 * {
     box-sizing: border-box;
 }
 
 body {
-    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family);
+    background: var(--background-color);
+    color: var(--primary-color);
+}
+.header{
+    background: var(--secondary-color);
+    color: var(--background-color);
+}
+.footer{
+    background: var(--secondary-color);
+    color: var(--background-color);
+}
+.box{
+    max-width:800px;
+    margin: auto;
 }

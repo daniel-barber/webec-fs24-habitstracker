@@ -1,13 +1,13 @@
 {# @pebvariable name="title" type="java.lang.String" #}
 {% extends "../layout/default" %}
-{% block content %}
-    <h1 class="heading1">Habits</h1>
+    {% block content %}
+        <h1 class="heading1">Habits</h1>
 
-    {% for habit in habits %}
-    <div class="habits_list">
-        <h2 class="habits_title">
-            <a href="{{ href('/habit/' + habit.id) }}" class="link">{{ habit.name }}</a>
-        </h2>
-    </div>
-    {% endfor %}
-{% endblock %}
+        {% for habit in habits %}
+        <div class="habits_list">
+            <h2 class="habits_title">
+                <a href="{{ href('/habit/' + habit.id) }}" class="link">{{ habit.name }}</a>
+            </h2>
+        </div>
+        {% endfor %}
+    {% endblock %}

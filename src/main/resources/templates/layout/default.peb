@@ -16,13 +16,26 @@
     </head>
     <body>
     <header class="header">
+        <div class="header__box box">
+            <a href={{href('/')}}>
+            <span class="header__text">Habits</span>
+            </a>
+            <nav class="menu">
+                <ul>
+                    <li><a href="{{ href('/about') }}">About</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
     <main class="main">
-        <div>
+        <div class="box">
                 {% block content %}{% endblock %}
         </div>
     </main>
     <footer class="footer">
+        <div class="footer_box box">
+            <span class="footer_text"> Copyright ...</span>
+        </div>
     </footer>
     </body>
 </html>
