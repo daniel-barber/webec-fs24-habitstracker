@@ -5,7 +5,7 @@
 
     {% for habit in habits %}
     <div class="habits_list">
-        <h2 class="habits_title">
+        <h2 class="habits_title">{{ habit.name }}
         </h2>
     </div>
     {% endfor %}
