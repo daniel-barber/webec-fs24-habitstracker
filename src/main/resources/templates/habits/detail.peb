@@ -4,7 +4,16 @@
 {% block title %}{{ habit.name }}{% endblock %}
 {% block content %}
     <h1>{{ habit.name }}</h1>
+    <button class="btn">Edit this Habit</button>
     <p>{{ habit.description }}</p>
     <button class="bnt">Add Log</button>
+    {% if habit.logs.size > 0 %}
+        {% for log in habit.logs %}
+            <h3>{{ log.title }}</h3>
+{#            <p>{{ log.entryTime }}</p>#}
+        {% endfor %}
+    {% else %}
+    <p>There are no logs yet.</p>
+    {% endif  %}
 
 {% endblock %}

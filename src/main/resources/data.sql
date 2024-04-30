@@ -3,9 +3,17 @@ INSERT IGNORE INTO HABIT (id, name, description) VALUES (2, 'Regular Database Op
 INSERT IGNORE INTO HABIT (id, name, description) VALUES (3, 'Continuous Learning through Online Courses', 'Enroll in online courses or tutorials related to web development topics such as HTML, CSS, JavaScript frameworks, and modern web development practices. Allocate a few hours each week to watch lectures, complete exercises, and apply newly acquired knowledge to your projects. This habit will help you stay current with industry trends and expand your skill set.');
 
 
-/*INSERT IGNORE INTO LOG (id, title) VALUES (1, 'Completed coding challenge on LeetCode');
+INSERT IGNORE INTO LOG (id, title) VALUES (1, 'Completed coding challenge on LeetCode');
 INSERT IGNORE INTO LOG (id, title) VALUES (2, 'Worked on personal project');
 INSERT IGNORE INTO LOG (id, title) VALUES (3, 'Optimized database queries');
 INSERT IGNORE INTO LOG (id, title) VALUES (4, 'Reviewed database schema design');
 INSERT IGNORE INTO LOG (id, title) VALUES (5, 'Completed online course on JavaScript frameworks');
-INSERT IGNORE INTO LOG (id, title) VALUES (6, 'Practiced CSS Flexbox layout');*/
+INSERT IGNORE INTO LOG (id, title) VALUES (6, 'Practiced CSS Flexbox layout');
+
+
+INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (1, 1);
+INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (1, 2);
+INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (2, 3);
+INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (2, 4);
+INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (3, 5);
+INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (3, 6);
