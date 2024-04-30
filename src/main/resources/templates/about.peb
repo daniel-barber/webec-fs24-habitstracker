@@ -4,6 +4,22 @@
 {% block title %}About{% endblock %}
 
 {% block content %}
-    <h1 class="heading heading--size-1">About</h1>
-    <p>This is a sample application for the module Web Engineering at the FHNW. It shows a list of books, allows to add and edit books and write book ratings.</p>
+    <h1 class="heading heading--size-1">About Us</h1>
+
+    <h2>Teammitglieder:</h2>
+    <ul>
+        <li>Daniel Barber</li>
+        <li>Nico Odermatt</li>
+    </ul>
+
+    <h2>Entities:</h2>
+    <ul>
+        <li>User</li>
+        <li>Log</li>
+        <li>Habit</li>
+    </ul>
+
+    <h2>Project Description:</h2>
+    <p>Wir möchten ein Habit-Tracker umsetzen. Hierbei kann sich ein User einloggen und Log-Einträge für verschiedene Habits erfassen. Die Habits sind vordefiniert. Ein Log-Eintrag gehört zu einem User und einem Habit. Ein User kann mehrere Logs haben und ein Habit kann mehrere Logs haben.</p>
+    <p>Unseren Fokus legen wir auf CSS responsive und Authentifikation.</p>
 {% endblock %}
