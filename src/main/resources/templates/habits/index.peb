@@ -2,7 +2,7 @@
 {% extends "../layout/default" %}
     {% block content %}
         <h1 class="heading1">Habits</h1>
-    <a href="{{ href('/habit/add') }}"><button class="btn_big">Add a new Habit</button></a>
+        <a href="{{ href('/habit/add') }}"><button class="btn_big">Add a new Habit</button></a>
         {% for habit in habits %}
         <div class="habits_list">
             <h2 class="habits_title">

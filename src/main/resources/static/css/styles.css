@@ -36,3 +36,36 @@ body {
     max-width:800px;
     margin: auto;
 }
+
+/*Forms*/
+.form_field {
+    margin-bottom: 20px;
+}
+
+.form_label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form_input,
+.form_textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: border-color 0.3s ease;
+}
+
+.form_input-error,
+.form_textarea-error {
+    border-color: #ff6666;
+}
+
+.form_error {
+    margin-top: 5px;
+    color: #ff6666;
+    font-size: 14px;
+}
