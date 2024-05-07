@@ -8,7 +8,7 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(authz -> authz
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-            .anyRequest().authenticated()
+           // .anyRequest().authenticated()
         ).build();
     }
 }
