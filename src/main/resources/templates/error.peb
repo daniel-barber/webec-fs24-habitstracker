@@ -1,0 +1,10 @@
+{% extends "layout/default" %}
+
+{% block title %}
+    404 - Page not found
+{% endblock %}
+
+{% block content %}
+    <h1>Nothing to look for here!</h1>
+    <p>Sorry there has been an unexpected error.</p>
+{% endblock %}
