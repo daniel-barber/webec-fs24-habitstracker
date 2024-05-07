@@ -1,19 +1,12 @@
 {# @pebvariable name="title" type="java.lang.String" #}
 {% extends "../layout/default" %}
-    {% block content %}
-    <h1 class="heading1">Create a new habit</h1>
-    <div class="form-container">
-        <form id="myForm">
-            <div class="form-group">
-                <label for="title">Title:</label>
-                <input type="text" id="title" name="title" required>
-            </div>
-            <div class="form-group">
-                <label for="description">Description:</label>
-                <textarea id="description" name="description" rows="4" required></textarea>
-            </div>
-            <button type="submit" class="btn-save">Save</button>
-        </form>
-    </div>
+{% import "forms/input" %}
+{% import "forms/submit" %}
 
+    {% block content %}
+        <form method="post" class="form">
+            {{ input("habit", "Name", "name", habit.name) }}
+            {{ input("habit", "Description", "desc", habit.description) }}
+            {{ submit("Save") }}
+        </form>
     {% endblock %}
