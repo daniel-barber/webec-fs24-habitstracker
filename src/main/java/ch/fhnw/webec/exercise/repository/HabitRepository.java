@@ -7,11 +7,4 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface HabitRepository extends JpaRepository<Habit, Integer> {
-
-    @Query("""
-            SELECT DISTINCT habit FROM Habit habit
-           
-        """)
-    List<Habit> findBySearch(@Param("search") String search);
-
 }
