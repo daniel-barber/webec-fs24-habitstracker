@@ -1,6 +1,7 @@
 package ch.fhnw.webec.exercise.controller;
 
 import ch.fhnw.webec.exercise.model.Habit;
+import ch.fhnw.webec.exercise.model.Log;
 import ch.fhnw.webec.exercise.repository.HabitRepository;
 import ch.fhnw.webec.exercise.repository.LogRepository;
 import jakarta.validation.Valid;
@@ -43,9 +44,9 @@ public class HabitController {
     }
 
     @RequestMapping(path = "/habit/add", method = RequestMethod.POST)
-    public String addBook(@Valid Habit habit, BindingResult bindingResult, Model model) {
+    public String addHabits(@Valid Habit habit, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("Habit", habit);
+            model.addAttribute("habit", habit);
 
             return "habits/add";
         } else {
@@ -54,4 +55,30 @@ public class HabitController {
             return "redirect:/habits/" + habit.getId();
         }
     }
+
+
+    @RequestMapping(path = "/habit/{id}/edit", method = RequestMethod.GET)
+    public String editHabit(@PathVariable int id, Model model) {
+        model.addAttribute("habit", this.habitRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+
+        return "habits/edit";
+    }
+
+    @RequestMapping(path = "/habit/{id}/edit", method = RequestMethod.POST)
+    public String editBook(@Valid Habit habit, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("habit", habit);
+
+            return "habits/edit";
+        } else {
+            this.habitRepository.save(habit);
+
+            return "redirect:/habits/" + habit.getId();
+        }
+    }
+    @RequestMapping(path = "/habit/{id}/logs/add", method = RequestMethod.POST)
+    public String addLog(@PathVariable int id, @Valid Log log, BindingResult bindingResult, Model model){
+        return "habits/add";
+    }
+
 }
