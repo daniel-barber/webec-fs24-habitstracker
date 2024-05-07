@@ -1,0 +1,8 @@
+    {% extends "layout/default" %}
+
+        {% block title %}403 - Forbidden{% endblock %}
+
+    {% block content %}
+    <h1 class="heading heading--size-1">403 - Forbidden</h1>
+    <p>We are sorry but that is forbidden!</p>
+{% endblock %}

@@ -1,3 +1,4 @@
+/*
 package ch.fhnw.webec.exercise.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -9,6 +10,8 @@ public class SecurityConfiguration {
         return http.authorizeHttpRequests(authz -> authz
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
            // .anyRequest().authenticated()
+            .anyRequest().permitAll()
         ).build();
     }
 }
+*/
