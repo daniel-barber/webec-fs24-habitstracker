@@ -1,0 +1,22 @@
+{% macro input(form, label, name, value) %}
+    {% set fieldId = form + '_' + name %}
+
+    <div class="form_field">
+        <label class="form_label" for="{{ fieldId }}">{{ label }}</label>
+        {% if type == "textarea" %}
+            <textarea class="form_textarea {% if hasFieldErrors(form, name) %}form_textarea-error{% endif %}"
+                      id="{{ fieldId }}"
+                      name="{{ name }}" >{{ value }}</textarea>
+            {% else %}
+            <input class="form_input {% if hasFieldErrors(form, name) %}form_input-error{% endif %}"
+                   id="{{ fieldId }}"
+                   name="{{ name }}"
+                   value="{{ value }}" />
+        {% endif %}
+
+        {% for error in getFieldErrors(form, name) %}
+            <p class="form_error">{{ error }}</p>
+        {% endfor %}
+    </div>
+
+{% endmacro %}
