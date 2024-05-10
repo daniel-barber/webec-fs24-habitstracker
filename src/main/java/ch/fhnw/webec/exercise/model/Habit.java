@@ -10,7 +10,7 @@ public class Habit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
+//ok
     @NotEmpty
     private String name;
 
