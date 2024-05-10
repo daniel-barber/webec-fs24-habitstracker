@@ -13,8 +13,7 @@
         <p>{{ habit.description }}</p>
         {% if habit.logs.size > 0 %}
             {% for log in habit.logs %}
-            <h3>{{ log.title }}</h3>
-            {#            <p>{{ log.entryTime }}</p>#}
+            <h3>{{ log.entryTime }}: &nbsp;{{ log.title }}</h3>
             {% endfor %}
             {% else %}
         <p>There are no logs yet.</p>

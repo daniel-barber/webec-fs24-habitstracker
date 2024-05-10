@@ -7,7 +7,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 @Entity
 public class Log {
@@ -43,6 +45,11 @@ public class Log {
 
     public String getTitle() {
         return title;
+    }
+
+    public String getEntryTime(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy',' HH:mm 'Uhr'", Locale.GERMAN);
+        return entryTime.format(formatter);
     }
 
     public void setTitle(String title) {
