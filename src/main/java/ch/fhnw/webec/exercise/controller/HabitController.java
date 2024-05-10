@@ -44,7 +44,7 @@ public class HabitController {
     }
 
     @RequestMapping(path = "/habit/add", method = RequestMethod.POST)
-    public String addHabits(@Valid Habit habit, BindingResult bindingResult, Model model) {
+    public String addHabit(@Valid Habit habit, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("habit", habit);
 
@@ -52,7 +52,7 @@ public class HabitController {
         } else {
             this.habitRepository.save(habit);
 
-            return "redirect:/habits/" + habit.getId();
+            return "redirect:/habit/" + habit.getId();
         }
     }
 

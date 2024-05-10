@@ -6,7 +6,7 @@
     {% block content %}
         <form method="post" class="form">
             {{ input("habit", "Name", "name", habit.name) }}
-            {{ input("habit", "Description", "desc", habit.description) }}
+            {{ input("habit", "Description", "description", habit.description) }}
             {{ submit("Save") }}
         </form>
     {% endblock %}
