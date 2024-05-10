@@ -28,18 +28,18 @@ public class HabitController {
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String index(@RequestParam() Optional <String> search, Model model) {
         model.addAttribute("habits", this.habitRepository.findAll());
-        return "habits/index";
+        return "habit/index";
     }
 
     @RequestMapping(path = "/habit/{id}", method = RequestMethod.GET)
     public String detailHabits(@PathVariable() int id, Model model){
         model.addAttribute("habit", this.habitRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
         System.out.println(this.habitRepository.findById(id));
-        return "habits/detail";
+        return "habit/detail";
     }
     @RequestMapping(path="/habit/add", method = RequestMethod.GET)
     public String addHabit(Model model){
-        return "habits/add";
+        return "habit/add";
 
     }
 
@@ -48,7 +48,7 @@ public class HabitController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("habit", habit);
 
-            return "habits/add";
+            return "habit/add";
         } else {
             this.habitRepository.save(habit);
 
@@ -61,7 +61,7 @@ public class HabitController {
     public String editHabit(@PathVariable int id, Model model) {
         model.addAttribute("habit", this.habitRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
 
-        return "habits/edit";
+        return "habit/edit";
     }
 
     @RequestMapping(path = "/habit/{id}/edit", method = RequestMethod.POST)
@@ -69,7 +69,7 @@ public class HabitController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("habit", habit);
 
-            return "habits/edit";
+            return "habit/edit";
         } else {
             this.habitRepository.save(habit);
 
@@ -78,7 +78,7 @@ public class HabitController {
     }
     @RequestMapping(path = "/habit/{id}/logs/add", method = RequestMethod.POST)
     public String addLog(@PathVariable int id, @Valid Log log, BindingResult bindingResult, Model model){
-        return "habits/add";
+        return "habit/add";
     }
 
 }
