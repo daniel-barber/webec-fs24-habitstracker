@@ -1,3 +1,4 @@
+/*
 package ch.fhnw.webec.exercise.config;
 
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -8,7 +9,9 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(authz -> authz
             .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-            .anyRequest().authenticated()
+           // .anyRequest().authenticated()
+            .anyRequest().permitAll()
         ).build();
     }
 }
+*/
