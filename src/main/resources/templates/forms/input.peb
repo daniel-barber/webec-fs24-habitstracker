@@ -1,4 +1,10 @@
-{% macro input(form, label, name, value) %}
+{# @pebvariable name="form" type="java.lang.String" #}
+{# @pebvariable name="label" type="java.lang.String" #}
+{# @pebvariable name="name" type="java.lang.String" #}
+{# @pebvariable name="type" type="java.lang.String" #}
+{# @pebvariable name="value" type="java.lang.String" #}
+
+{% macro input(form, label, name, type, value, _context) %}
     {% set fieldId = form + '_' + name %}
 
     <div class="form_field">
@@ -11,6 +17,7 @@
             <input class="form_input {% if hasFieldErrors(form, name) %}form_input-error{% endif %}"
                    id="{{ fieldId }}"
                    name="{{ name }}"
+                   type="{{ type }}"
                    value="{{ value }}" />
         {% endif %}
 
