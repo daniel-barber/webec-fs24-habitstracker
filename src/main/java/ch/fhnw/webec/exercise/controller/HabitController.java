@@ -73,12 +73,20 @@ public class HabitController {
         } else {
             this.habitRepository.save(habit);
 
-            return "redirect:/habits/" + habit.getId();
+            return "redirect:/habit/" + habit.getId();
         }
     }
     @RequestMapping(path = "/habit/{id}/logs/add", method = RequestMethod.POST)
     public String addLog(@PathVariable int id, @Valid Log log, BindingResult bindingResult, Model model){
         return "habit/add";
+    }
+
+
+    @RequestMapping(path = "/habit/{id}/delete", method = RequestMethod.POST)
+    public String deleteHabit(@PathVariable int id) {
+        this.habitRepository.delete(this.habitRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+
+        return "redirect:/";
     }
 
 }
