@@ -1,12 +1,14 @@
 {# @pebvariable name="title" type="java.lang.String" #}
+
 {% extends "../layout/default" %}
+
 {% import "forms/input" %}
 {% import "forms/submit" %}
 
     {% block content %}
         <form method="post" class="form">
-            {{ input("habit", "Name", "name", habit.name) }}
-            {{ input("habit", "Description", "desc", habit.description) }}
+            {{ input("habit", "Name", "name", "text", habit.name, _context) }}
+            {{ input("habit", "Description", "desc", "textarea", habit.description, _context) }}
             {{ submit("Save") }}
         </form>
     {% endblock %}
