@@ -6,15 +6,15 @@
 {% import "forms/submit" %}
 
 {% block content %}
+
     <form method="post" class="form">
          {{ input("habit", "Name", "name", "text", habit.name, _context) }}
          {{ input("habit", "Description", "description", "textarea", habit.description, _context) }}
          {{ submit("Save") }}
     </form>
-    <div class="book-detail__buttons">
-                <form action="{{ href('/habit/' + habit.id + '/delete') }}" method="post" class="form">
-                    {{ csrf(_csrf) }}
-{{ submit("Delete") }}
-                </form>
-            </div>
+
+    <form action="{{ href('/habit/' + habit.id + '/delete') }}" method="post" class="form">
+         {{ submit("Delete") }}
+    </form>
+
 {% endblock %}
