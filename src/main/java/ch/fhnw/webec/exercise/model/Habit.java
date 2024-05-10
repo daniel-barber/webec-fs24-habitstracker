@@ -18,8 +18,7 @@ public class Habit {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @NotEmpty
-    @OneToMany
+    @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Log> logs;
 
     public void addLog(Log log){
