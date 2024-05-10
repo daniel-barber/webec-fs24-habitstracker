@@ -8,7 +8,7 @@
 {% block content %}
     <h1>{{ habit.name }}</h1>
         <a href="{{ href('/habit/' + habit.id + '/edit') }}">
-        <button class="btn">Edit this Habit</button>
+        <button class="btn">Edit Habit</button>
         </a>
         <p>{{ habit.description }}</p>
         {% if habit.logs.size > 0 %}
@@ -20,7 +20,7 @@
         <p>There are no logs yet.</p>
         {% endif  %}
         <h3>Add a log</h3>
-        <form action="{{ href('/habit/' + habit.id + '/logs/add')}}" method="post">
+        <form action="{{ href('/habit/' + habit.id + '/log/add')}}" method="post">
             {{ input("log", "Title", "title", "text", log.title, _context) }}
             {{ submit("Add log") }}
         </form>

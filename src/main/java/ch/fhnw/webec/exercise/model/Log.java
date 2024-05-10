@@ -4,7 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import org.hibernate.annotations.CreationTimestamp;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 public class Log {
@@ -36,6 +39,8 @@ public class Log {
         this.id = id;
     }
 
+    public void setIdNull(){ this.id = Integer.parseInt(null);}
+
     public String getTitle() {
         return title;
     }
@@ -44,13 +49,15 @@ public class Log {
         this.title = title;
     }
 
-    public LocalDateTime getEntryTime() {
-        return entryTime;
-    }
 
-    public void setEntryTime(LocalDateTime entryTime) {
-        this.entryTime = entryTime;
-    }
+
+//    public Timestamp getEntryTime() {
+//        return entryTime;
+//    }
+//
+//    public void setEntryTime(Timestamp entryTime) {
+//        this.entryTime = entryTime;
+//    }
 
 
 }
