@@ -73,12 +73,42 @@ public class HabitController {
         } else {
             this.habitRepository.save(habit);
 
-            return "redirect:/habits/" + habit.getId();
+            return "redirect:/habit/" + habit.getId();
         }
     }
-    @RequestMapping(path = "/habit/{id}/logs/add", method = RequestMethod.POST)
-    public String addLog(@PathVariable int id, @Valid Log log, BindingResult bindingResult, Model model){
-        return "habit/add";
+    @RequestMapping(path = "/habit/{habitId}/log/add", method = RequestMethod.POST)
+    public String addLog(@PathVariable int habitId, @Valid Log log, BindingResult bindingResult, Model model){
+        var habit = this.habitRepository.findById(habitId).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("habit", habit);
+            model.addAttribute( "log", log);
+
+            return "/habit/"+habit.getId();
+        } else {
+            log.setHabit(habit);
+
+            try{
+            this.logRepository.save(log);}
+            catch (Exception e) {
+                System.err.println("Error saving log: " + e.getMessage());
+                e.printStackTrace();
+                // Optionally, add an error message to the model
+                model.addAttribute("errorMessage", "Error saving log: " + e.getMessage());
+                return "redirect:/habit/"+habit.getId(); // Redirect back to the form
+            }
+            return "redirect:/habit/"+habit.getId();
+        }
+    }
+
+
+
+
+    @RequestMapping(path = "/habit/{id}/delete", method = RequestMethod.POST)
+    public String deleteHabit(@PathVariable int id) {
+        this.habitRepository.delete(this.habitRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND)));
+
+        return "redirect:/";
     }
 
 }

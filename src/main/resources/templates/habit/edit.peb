@@ -6,9 +6,15 @@
 {% import "forms/submit" %}
 
 {% block content %}
+
     <form method="post" class="form">
          {{ input("habit", "Name", "name", "text", habit.name, _context) }}
-         {{ input("habit", "Description", "desc", "textarea", habit.description, _context) }}
+         {{ input("habit", "Description", "description", "textarea", habit.description, _context) }}
          {{ submit("Save") }}
     </form>
+
+    <form action="{{ href('/habit/' + habit.id + '/delete') }}" method="post" class="form">
+         {{ submit("Delete") }}
+    </form>
+
 {% endblock %}
