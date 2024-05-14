@@ -16,9 +16,9 @@
     </head>
     <body>
     <header class="header">
-        <div class="header__box box">
+        <div class="header_box box">
             <a href={{href('/')}}>
-            <span class="header__text">Habits</span>
+            <span class="header_span">Habitstracker</span>
             </a>
             <nav class="menu">
                 <ul>
