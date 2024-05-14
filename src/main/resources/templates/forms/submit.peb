@@ -1,5 +1,5 @@
 {# @pebvariable name="value" type="java.lang.String" #}
 
 {% macro submit(value) %}
-    <input type="submit" value="{{ value }}" class="btn"/>
+    <input type="submit" value="{{ value }}" class="btn_big"/>
 {% endmacro %}
