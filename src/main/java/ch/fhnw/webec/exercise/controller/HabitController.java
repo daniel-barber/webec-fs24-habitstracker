@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -63,19 +64,43 @@ public class HabitController {
 
         return "habit/edit";
     }
-
+//help from ChatGPT
     @RequestMapping(path = "/habit/{id}/edit", method = RequestMethod.POST)
-    public String editBook(@Valid Habit habit, BindingResult bindingResult, Model model) {
+    public String editHabit(@PathVariable int id, @Valid Habit habit, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("habit", habit);
-
             return "habit/edit";
         } else {
-            this.habitRepository.save(habit);
+            // Fetch the existing habit from the database
+            Habit existingHabit = habitRepository.findById(id)
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
-            return "redirect:/habit/" + habit.getId();
+            // Update the existing habit's properties
+            existingHabit.setName(habit.getName());
+            existingHabit.setDescription(habit.getDescription());
+
+            // Ensure logs reference the existing habit correctly
+            List<Log> newLogs = habit.getLogs();
+            for (Log log : newLogs) {
+                log.setHabit(existingHabit);
+            }
+            existingHabit.setLogs(newLogs); // Use the setter to handle orphan removal
+
+            // Save the updated habit
+            Habit updatedHabit = habitRepository.save(existingHabit);
+
+            model.addAttribute("habit", updatedHabit);
+            model.addAttribute("logs", updatedHabit.getLogs());
+
+            return "redirect:/habit/" + updatedHabit.getId();
         }
     }
+
+
+
+
+
+
     @RequestMapping(path = "/habit/{habitId}/log/add", method = RequestMethod.POST)
     public String addLog(@PathVariable int habitId, @Valid Log log, BindingResult bindingResult, Model model){
         var habit = this.habitRepository.findById(habitId).orElseThrow(()->new ResponseStatusException(HttpStatus.NOT_FOUND));
@@ -93,15 +118,12 @@ public class HabitController {
             catch (Exception e) {
                 System.err.println("Error saving log: " + e.getMessage());
                 e.printStackTrace();
-                // Optionally, add an error message to the model
                 model.addAttribute("errorMessage", "Error saving log: " + e.getMessage());
-                return "redirect:/habit/"+habit.getId(); // Redirect back to the form
+                return "redirect:/habit/"+habit.getId();
             }
             return "redirect:/habit/"+habit.getId();
         }
     }
-
-
 
 
     @RequestMapping(path = "/habit/{id}/delete", method = RequestMethod.POST)
