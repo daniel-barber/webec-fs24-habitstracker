@@ -24,14 +24,15 @@ public class Log {
     private LocalDateTime entryTime;
 
     @ManyToOne
+    @JoinColumn(name = "habit_id", nullable = false)
     private Habit habit;
+
     public Habit getHabit() {
         return habit;
     }
 
     public void setHabit(Habit habit) {
         this.habit = habit;
-        this.habit.addLog(this);
     }
     public int getId() {
         return id;
