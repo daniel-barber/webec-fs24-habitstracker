@@ -10,10 +10,3 @@ INSERT IGNORE INTO LOG (id, title) VALUES (4, 'Reviewed database schema design')
 INSERT IGNORE INTO LOG (id, title) VALUES (5, 'Completed online course on JavaScript frameworks');
 INSERT IGNORE INTO LOG (id, title) VALUES (6, 'Practiced CSS Flexbox layout');
 
-
-INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (1, 1);
-INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (1, 2);
-INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (2, 3);
-INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (2, 4);
-INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (3, 5);
-INSERT IGNORE INTO HABIT_LOGS (habit_id, logs_id) VALUES (3, 6);
