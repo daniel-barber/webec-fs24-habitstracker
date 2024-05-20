@@ -3,6 +3,7 @@ package ch.fhnw.webec.exercise.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -10,7 +11,7 @@ public class Habit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-//ok
+
     @NotEmpty
     private String name;
 
@@ -18,18 +19,35 @@ public class Habit {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany
-    private List<Log> logs;
+    @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Log> logs = new ArrayList<>();
 
-    public void addLog(Log log){
-        if(!this.getLogs().contains(log)){
-        this.getLogs().add(log);
-        }
-        if(log.getHabit() != this){
+    public void addLog(Log log) {
+        if (!this.logs.contains(log)) {
+            this.logs.add(log);
             log.setHabit(this);
         }
-
     }
+    public void removeLog(Log log) {
+        if (this.logs.contains(log)) {
+            this.logs.remove(log);
+            log.setHabit(null);
+        }
+    }
+
+
+    public void setLogs(List<Log> logs) {
+        // Remove existing logs
+        for (Log log : new ArrayList<>(this.logs)) {
+            removeLog(log);
+        }
+        // Add new logs
+        for (Log log : logs) {
+            addLog(log);
+        }
+    }
+
+    // Getters and setters
     public int getId() {
         return id;
     }
@@ -56,9 +74,5 @@ public class Habit {
 
     public List<Log> getLogs() {
         return logs;
-    }
-
-    public void setLogs(List<Log> logs) {
-        this.logs = logs;
     }
 }
