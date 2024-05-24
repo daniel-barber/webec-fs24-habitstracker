@@ -21,9 +21,17 @@
             <a href={{href('/')}}>
             <span class="header_span">Habitstracker</span>
             </a>
-            <nav class="menu">
-                <ul>
-                    <li><a href="{{ href('/about') }}">About</a></li>
+            <nav>
+
+                <ul class="header_menu">
+                    {% if request.userPrincipal is not null %}
+                    <li>
+                        <form action="{{ href('/logout') }}" method="post" class="header_menu__logout-form">
+                            {{ csrf(_csrf) }}
+                            <input type="submit" value="Logout" class="header_menu__logout-input">
+                        </form>
+                    </li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>
@@ -35,15 +43,12 @@
     </main>
     <footer class="footer">
         <div class="footer_box box">
-        {% if request.userPrincipal is not null %}
-                        <li class="footer__menu-item">
-                            <form action="{{ href('/logout') }}" method="post" class="footer__logout-form">
-                                {{ csrf(_csrf) }}
-                                <input type="submit" value="Logout" class="link link--footer footer__logout-form-submit">
-                            </form>
-                        </li>
-                    {% endif %}
             <span class="footer_text"> Copyright ...</span>
+            <nav>
+            <ul class="footer_menu">
+                <li class="footer_menu-item"><a href="{{ href('/about') }}">About</a></li>
+            </ul>
+            </nav>
         </div>
     </footer>
     </body>
