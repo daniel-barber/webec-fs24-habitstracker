@@ -6,10 +6,12 @@
 
 {% block title %}{{ habit.name }}{% endblock %}
 {% block content %}
-    <h1>{{ habit.name }}</h1>
+    <div class="top">
+        <h1 class="heading1">{{ habit.name }}</h1>
         <a href="{{ href('/habit/' + habit.id + '/edit') }}">
         <button class="btn_big">Edit Habit</button>
         </a>
+        </div>
         <p>{{ habit.description }}</p>
         <h3>Logs:</h3>
         {% if habit.logs.size > 0 %}
