@@ -1,3 +1,4 @@
+    {% import "forms/csrf" %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,6 +35,14 @@
     </main>
     <footer class="footer">
         <div class="footer_box box">
+        {% if request.userPrincipal is not null %}
+                        <li class="footer__menu-item">
+                            <form action="{{ href('/logout') }}" method="post" class="footer__logout-form">
+                                {{ csrf(_csrf) }}
+                                <input type="submit" value="Logout" class="link link--footer footer__logout-form-submit">
+                            </form>
+                        </li>
+                    {% endif %}
             <span class="footer_text"> Copyright ...</span>
         </div>
     </footer>

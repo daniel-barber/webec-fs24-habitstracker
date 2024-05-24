@@ -19,21 +19,28 @@ public class SecurityConfiguration{
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        return http.authorizeHttpRequests(authz -> authz
-            .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-            .requestMatchers("/error").permitAll()
-            .requestMatchers("/").permitAll()
-            .requestMatchers("/about").permitAll()
-            .requestMatchers("/signup").permitAll()
-          //  .requestMatchers("/habits/*").permitAll()
-          //  .requestMatchers("/api/**").permitAll() // Permitting for demonstrating purposes only!
-            .anyRequest().authenticated()
-        ).formLogin(form -> form
-            .loginPage("/login").permitAll()
-            .defaultSuccessUrl("/")
-        ).csrf(csrf -> csrf
-            .ignoringRequestMatchers("/api/**") // Ignoring for demonstrating purposes only!
-        ).build();
+        http
+            .authorizeHttpRequests(authorize -> authorize
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .requestMatchers("/error").permitAll()
+                .requestMatchers("/login").permitAll()
+                .requestMatchers("/signup").permitAll()
+                .anyRequest().authenticated()
+            )
+            .formLogin(form -> form
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/", true)
+            )
+            .logout(logout -> logout
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/login?logout")
+                .permitAll()
+            )
+            .csrf(csrf -> csrf
+                .ignoringRequestMatchers("/api/**")
+            );
+
+        return http.build();
     }
 
     @Bean

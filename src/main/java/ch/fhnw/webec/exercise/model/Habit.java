@@ -78,4 +78,12 @@ public class Habit {
     public List<Log> getLogs() {
         return logs;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User currentUser) {
+        this.user = currentUser;
+    }
 }
