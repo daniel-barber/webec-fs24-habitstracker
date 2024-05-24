@@ -19,6 +19,9 @@ public class Habit {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @ManyToOne
+    private User user;
+
     @OneToMany(mappedBy = "habit", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Log> logs = new ArrayList<>();
 
