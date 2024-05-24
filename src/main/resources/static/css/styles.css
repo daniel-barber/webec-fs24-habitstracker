@@ -143,7 +143,7 @@ ul:hover{
 .habits_tile{
     border-radius: var(--small-space);
     padding: var(--base-space);
-    background: var(--background-color);
+    background: white;
 }
 
 .habits_tile:hover{
