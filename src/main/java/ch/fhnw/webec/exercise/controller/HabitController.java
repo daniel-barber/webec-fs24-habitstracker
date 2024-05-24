@@ -79,13 +79,6 @@ public class HabitController {
             existingHabit.setName(habit.getName());
             existingHabit.setDescription(habit.getDescription());
 
-            // Ensure logs reference the existing habit correctly
-            List<Log> newLogs = habit.getLogs();
-            for (Log log : newLogs) {
-                log.setHabit(existingHabit);
-            }
-            existingHabit.setLogs(newLogs); // Use the setter to handle orphan removal
-
             // Save the updated habit
             Habit updatedHabit = habitRepository.save(existingHabit);
 
