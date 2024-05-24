@@ -2,8 +2,10 @@
 {% extends "../layout/default" %}
 
     {% block content %}
+        <div class="top">
         <h1 class="heading1">Habits</h1>
         <a href="{{ href('/habit/add') }}"><button class="btn_big">Add a new Habit</button></a>
+        </div>
         <div class="habits_list">
         {% for habit in habits %}
             <a href="{{ href('/habit/' + habit.id) }}" class="link">
@@ -11,6 +13,9 @@
                     <strong class="habits_title">
                         {{ habit.name }}
                     </strong>
+                    <p class="habits_description">
+                        {{ habit.description }}
+                    </p>
                 </div>
             </a>
         {% endfor %}
