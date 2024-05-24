@@ -2,6 +2,8 @@ pebble:
     suffix: .peb
     cache: false
     exposeRequestAttributes: true
+    prefix: templates/
+
 spring:
     datasource:
         # store data in a persistent file, mode MySQL and enable server

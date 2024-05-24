@@ -1,0 +1,26 @@
+{% extends "layout/default" %}
+
+    {% import "forms/input" %}
+    {% import "forms/csrf" %}
+    {% import "forms/submit" %}
+
+    {% block title %}Login{% endblock %}
+
+    {% block content %}
+        <section>
+            <h1>Login</h1>
+            <form method="post" class="form">
+                {{ input("user", "Username", "username", "text", username, _context) }}
+                {{ input("user", "Password", "password", "password", '', _context) }}
+                {{ csrf(_csrf) }}
+                {{ submit("Login") }}
+                {% if hasLoginError %}
+                    <p class="form__error">An error occurred while logging in, please try again.</p>
+                {% endif %}
+            </form>
+        </section>
+        <section>
+            <h1>Sign up</h1>
+            <p>No account yet? Sign up <a href="{{ href('/signup') }}" class="link">here</a>.</p>
+        </section>
+    {% endblock %}
