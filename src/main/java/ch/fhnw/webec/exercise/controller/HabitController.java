@@ -72,6 +72,16 @@ public class HabitController {
             // Set the current authenticated user as the owner of the habit
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             User currentUser = (User) authentication.getPrincipal();
+
+            // Debug log to check the current user
+            System.out.println("Authenticated user: " + currentUser.getUsername());
+
+            // Check if authentication is working correctly
+            if (currentUser == null) {
+                throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User is not authenticated");
+            }
+
+
             habit.setUser(currentUser);
 
             this.habitRepository.save(habit);

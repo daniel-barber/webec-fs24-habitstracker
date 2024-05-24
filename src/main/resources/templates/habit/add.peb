@@ -3,12 +3,14 @@
 {% extends "../layout/default" %}
 
 {% import "forms/input" %}
+    {% import "forms/csrf" %}
 {% import "forms/submit" %}
 
     {% block content %}
         <form method="post" class="form">
             {{ input("habit", "Name", "name", habit.name) }}
             {{ input("habit", "Description", "description", habit.description) }}
+            {{ csrf(_csrf) }}
             {{ submit("Save") }}
         </form>
     {% endblock %}

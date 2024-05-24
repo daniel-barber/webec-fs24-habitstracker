@@ -25,6 +25,7 @@ public class SecurityConfiguration{
                 .requestMatchers("/error").permitAll()
                 .requestMatchers("/login").permitAll()
                 .requestMatchers("/signup").permitAll()
+                .requestMatchers("/habit/**").authenticated()  // Ensure that this line allows authenticated access to habit endpoints
                 .anyRequest().authenticated()
             )
             .formLogin(form -> form

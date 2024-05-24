@@ -25,6 +25,7 @@
         <h3>Add a log</h3>
         <form action="{{ href('/habit/' + habit.id + '/log/add')}}" method="post">
             {{ input("log", "Title", "title", "text", log.title, _context) }}
+            {{ csrf(_csrf) }}
             {{ submit("Add log") }}
         </form>
 {% endblock %}
