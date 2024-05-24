@@ -1,0 +1,10 @@
+spring:
+  datasource:
+    url: jdbc:h2:mem:excersie_test
+  sql:
+    init:
+      data-locations:
+        - classpath:data-test.sql
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
