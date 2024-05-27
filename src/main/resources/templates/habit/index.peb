@@ -7,17 +7,17 @@
     <a href="{{ href('/habit/add') }}" class="btn_big">Add a new Habit</a>
     </div>
     <div class="habits_list">
-    {% for habit in habits %}
-        <a href="{{ href('/habit/' + habit.id) }}" class="link">
-            <div class="habits_tile">
-                <strong class="habits_title">
-                    {{ habit.name }}
-                </strong>
-                <p class="habits_description">
-                    {{ habit.description| slice(0, 55) }}...
-                </p>
-            </div>
-        </a>
-    {% endfor %}
+        {% for habit in habits %}
+            <a href="{{ href('/habit/' + habit.id) }}" class="link">
+                <div class="habits_tile">
+                    <strong class="habits_title">
+                        {{ habit.name }}
+                    </strong>
+                    <p class="habits_description">
+                        {{ habit.description | abbreviate(100) }}
+                    </p>
+                </div>
+            </a>
+        {% endfor %}
     </div>
 {% endblock %}
