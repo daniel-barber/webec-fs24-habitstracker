@@ -27,15 +27,15 @@ body {
     color: var(--primary-color);
 }
 
-a{
-     text-decoration: none;
-}
-
-a:visited{
-    text-decoration: none;
+.link{
     color: var(--background-color);
+    text-decoration: none;
 }
 
+.link--signup{
+    color: var(--primary-color);
+    text-decoration: underline;
+}
 .top{
     display: flex;
     justify-content: space-between;
