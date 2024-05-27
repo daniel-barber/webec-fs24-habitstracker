@@ -21,6 +21,6 @@
         </section>
         <section>
             <h1>Sign up</h1>
-            <p>No account yet? Sign up <a href="{{ href('/signup') }}" class="link">here</a>.</p>
+            <p>No account yet? Sign up <a href="{{ href('/signup') }}" class="link--signup">here</a>.</p>
         </section>
     {% endblock %}

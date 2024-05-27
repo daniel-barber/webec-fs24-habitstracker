@@ -8,7 +8,7 @@
 {% block content %}
     <div class="top">
         <h1 class="headings heading1">{{ habit.name }}</h1>
-        <a class="btn_big" href="{{ href('/habit/' + habit.id + '/edit') }}">Edit Habit</a>
+        <a class="link btn_big" href="{{ href('/habit/' + habit.id + '/edit') }}">Edit Habit</a>
     </div>
         <p>{{ habit.description }}</p>
         <h3>Logs:</h3>

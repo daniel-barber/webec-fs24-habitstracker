@@ -18,7 +18,7 @@
     <body>
     <header class="header">
         <div class="header_box box">
-            <a href={{href('/')}}>
+            <a class="link" href = {{href('/')}}>
             <span class="headings heading2">Habitstracker</span>
             </a>
             <nav>
@@ -45,7 +45,7 @@
             <span class="footer_text"> 	&#169; Barber-Odermatt 2024</span>
             <nav>
             <ul class="footer_menu">
-                <li class="footer_menu-item"><a href="{{ href('/about') }}">About</a></li>
+                <li class="footer_menu-item"><a class="link" href="{{ href('/about') }}">About</a></li>
             </ul>
             </nav>
         </div>
