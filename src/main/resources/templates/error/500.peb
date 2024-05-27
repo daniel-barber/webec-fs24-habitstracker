@@ -1,8 +1,8 @@
-    {% extends "layout/default" %}
+{% extends "layout/default" %}
 
-        {% block title %}500 - Internal Server Error{% endblock %}
+{% block title %}500 - Internal Server Error{% endblock %}
 
-    {% block content %}
-    <h1 class="heading heading--size-1">500 - Internal Server Error</h1>
+{% block content %}
+    <h1 class="headings heading1">500 - Internal Server Error</h1>
     <p>Please return to where you came from :)</p>
 {% endblock %}
