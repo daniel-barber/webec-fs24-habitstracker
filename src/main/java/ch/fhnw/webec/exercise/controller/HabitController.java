@@ -32,11 +32,9 @@ public class HabitController {
 
     @RequestMapping(path = "/", method = RequestMethod.GET)
     public String index(@RequestParam() Optional <String> search, Model model) {
-        // Get the current authenticated user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
 
         // Fetch habits only for the logged-in user
+        User currentUser = getCurrentUser();
         List<Habit> habits = this.habitRepository.findByUser(currentUser);
         model.addAttribute("habits", habits);
         return "habit/index";
@@ -47,8 +45,7 @@ public class HabitController {
         Habit habit = this.habitRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
+        User currentUser = getCurrentUser();
         if (habit.getUser().getId() != currentUser.getId()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
@@ -69,19 +66,13 @@ public class HabitController {
             model.addAttribute("habit", habit);
             return "habit/add";
         } else {
-            // Set the current authenticated user as the owner of the habit
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            User currentUser = (User) authentication.getPrincipal();
-
-            // Debug log to check the current user
-            System.out.println("Authenticated user: " + currentUser.getUsername());
-
+            User currentUser = getCurrentUser();
             // Check if authentication is working correctly
             if (currentUser == null) {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN, "User is not authenticated");
             }
 
-
+            //set current user to the habit
             habit.setUser(currentUser);
 
             this.habitRepository.save(habit);
@@ -97,8 +88,7 @@ public class HabitController {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
+        User currentUser = getCurrentUser();
         if (habit.getUser().getId() != currentUser.getId()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
@@ -117,15 +107,10 @@ public class HabitController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
             // Ensure that the habit belongs to the logged-in user
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            User currentUser = (User) authentication.getPrincipal();
+            User currentUser = getCurrentUser();
             if (existingHabit.getUser().getId() != currentUser.getId()) {
                 throw new ResponseStatusException(HttpStatus.FORBIDDEN);
             }
-
-//            // Fetch the existing habit from the database
-//            Habit existingHabit = habitRepository.findById(id)
-//                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
             // Update the existing habit's properties
             existingHabit.setName(habit.getName());
@@ -152,8 +137,7 @@ public class HabitController {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
+        User currentUser = getCurrentUser();
         if (habit.getUser().getId() != currentUser.getId()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
@@ -183,14 +167,18 @@ public class HabitController {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        User currentUser = (User) authentication.getPrincipal();
+        User currentUser = getCurrentUser();
         if (habit.getUser().getId() != currentUser.getId()) {
             throw new ResponseStatusException(HttpStatus.FORBIDDEN);
         }
 
         this.habitRepository.delete(habit);
         return "redirect:/";
+    }
+
+    private User getCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return (User) authentication.getPrincipal();
     }
 
 }
