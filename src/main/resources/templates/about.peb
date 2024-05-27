@@ -1,9 +1,9 @@
-{% extends "layout/default" %}
+    {% extends "layout/default" %}
 
 
-{% block title %}About{% endblock %}
+        {% block title %}About{% endblock %}
 
-{% block content %}
+    {% block content %}
     <h1 class="heading heading--size-1">About Us</h1>
 
     <h2>Teammitglieder:</h2>
@@ -12,14 +12,22 @@
         <li>Nico Odermatt</li>
     </ul>
 
-    <h2>Entities:</h2>
-    <ul>
-        <li>User</li>
-        <li>Log</li>
-        <li>Habit</li>
-    </ul>
+    <h2>Projektbeschreibung</h2>
+        <p>Wir haben einen Habit-Tracker erstellt, der es Benutzern ermöglicht, ihre Gewohnheiten zu verfolgen. Hier sind die Hauptfunktionen:</p>
 
-    <h2>Project Description:</h2>
-    <p>Wir möchten ein Habit-Tracker umsetzen. Hierbei kann sich ein User einloggen und Log-Einträge für verschiedene Habits erfassen. Die Habits sind vordefiniert. Ein Log-Eintrag gehört zu einem User und einem Habit. Ein User kann mehrere Logs haben und ein Habit kann mehrere Logs haben.</p>
-    <p>Unseren Fokus legen wir auf CSS responsive und Authentifikation.</p>
+    <h2>Entities:</h2>
+        <ul>
+            <li><strong>User: </strong>Ein User kann sich registrieren, einloggen und auf sein persönliches Dashboard zugreifen.Jeder User hat eine eindeutige ID, Username und Passwort.</li></br>
+            <li><strong>Habit: </strong>Habits sind Aktivitäten oder Ziele, die Benutzer verfolgen möchten. Diese können selber mit Titel und Beschreibung definiert werden. Beispiele für Habits: "Tägliches Laufen", "Wasser trinken", "Buch lesen". Ein User kann mehrere Habits haben und ein Habit kann mehrere Log-Einträge haben.</li></br>
+            <li><strong>Log: </strong>Ein Log-Eintrag gehört zu einem User und einem bestimmten Habit. Jeder Log-Eintrag enthält Informationen wie Datum, Zeit und Textfeld, um den Fortschritt des Habits zu dokumentieren.</li>
+        </ul>
+
+
+        <h2>Technologien</h2>
+        <p>Unser Fokus liegt auf folgenden Technologien:</p>
+        <ul>
+            <li><strong>CSS Responsive Design:</strong> Wir möchten sicherstellen, dass unsere Webanwendung auf verschiedenen Geräten und Bildschirmgrößen gut aussieht.</li> </br>
+            <li><strong>Authentifizierung:</strong> Benutzer müssen sich anmelden, um auf ihre Daten zuzugreifen.</li>
+        </ul>
+        </br></br>
 {% endblock %}
