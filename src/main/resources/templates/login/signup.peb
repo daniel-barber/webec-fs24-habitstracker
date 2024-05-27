@@ -10,8 +10,8 @@
     <h1>Registration</h1>
     <form method="post" class="form">
         {{ input("user", "Username", "username", "text", user.username, _context) }}
-    {{ input("user", "Password", "password", "password", '', _context) }}
-    {{ csrf(_csrf) }}
-    {{ submit("Sign up") }}
+        {{ input("user", "Password", "password", "password", '', _context) }}
+        {{ csrf(_csrf) }}
+        {{ submit("Sign up") }}
     </form>
 {% endblock %}
