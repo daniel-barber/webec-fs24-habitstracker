@@ -43,7 +43,7 @@
     </main>
     <footer class="footer">
         <div class="footer_box box">
-            <span class="footer_text"> Copyright ...</span>
+            <span class="footer_text"> 	&#169; Barber-Odermatt 2024</span>
             <nav>
             <ul class="footer_menu">
                 <li class="footer_menu-item"><a href="{{ href('/about') }}">About</a></li>
