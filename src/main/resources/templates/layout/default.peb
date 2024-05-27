@@ -1,4 +1,4 @@
-    {% import "forms/csrf" %}
+{% import "forms/csrf" %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,10 +19,9 @@
     <header class="header">
         <div class="header_box box">
             <a href={{href('/')}}>
-            <span class="header_span">Habitstracker</span>
+            <span class="headings heading2">Habitstracker</span>
             </a>
             <nav>
-
                 <ul class="header_menu">
                     {% if request.userPrincipal is not null %}
                     <li>
@@ -36,7 +35,7 @@
             </nav>
         </div>
     </header>
-    <main class="main">
+    <main class="content">
         <div class="box">
                 {% block content %}{% endblock %}
         </div>
