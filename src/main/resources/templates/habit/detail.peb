@@ -8,10 +8,8 @@
 {% block content %}
     <div class="top">
         <h1 class="heading1">{{ habit.name }}</h1>
-        <a href="{{ href('/habit/' + habit.id + '/edit') }}">
-        <button class="btn_big">Edit Habit</button>
-        </a>
-        </div>
+        <a class="btn_big" href="{{ href('/habit/' + habit.id + '/edit') }}">Edit Habit</a>
+    </div>
         <p>{{ habit.description }}</p>
         <h3>Logs:</h3>
         {% if habit.logs.size > 0 %}
@@ -21,12 +19,12 @@
                 <span>{{ log.entryTime }}</span>
             </div>
             {% endfor %}
-            {% else %}
+        {% else %}
         <p>There are no logs yet.</p>
         {% endif  %}
         <h3>Add a log</h3>
-        <form action="{{ href('/habit/' + habit.id + '/log/add')}}" method="post">
-            {{ input("log", "Title", "title", "text", log.title, _context) }}
+        <form action="{{ href('/habit/' + habit.id + '/log/add')}}" method="post" class="form">
+            {{ input("log", "Title", "title", "label", log.title, _context) }}
             {{ csrf(_csrf) }}
             {{ submit("Add log") }}
         </form>
