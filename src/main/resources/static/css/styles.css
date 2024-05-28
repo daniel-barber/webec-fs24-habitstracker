@@ -159,7 +159,6 @@ header{
     border-radius: var(--small-space);
     padding: var(--base-space);
     background: white;
-    height: 150px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -182,7 +181,7 @@ header{
 
 .habits_description{
     color: #888888;
-    text-align: center;
+    padding-bottom: var(--small-space);
 }
 
 /*Buttons*/
