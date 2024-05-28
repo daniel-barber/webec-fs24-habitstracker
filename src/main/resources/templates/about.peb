@@ -23,11 +23,16 @@
         </ul>
 
 
-        <h2>Technologien</h2>
+    <h2>Technologien</h2>
         <p>Unser Fokus liegt auf folgenden Technologien:</p>
         <ul>
             <li><strong>CSS Responsive Design:</strong> Wir möchten sicherstellen, dass unsere Webanwendung auf verschiedenen Geräten und Bildschirmgrößen gut aussieht.</li> </br>
             <li><strong>Authentifizierung:</strong> Benutzer müssen sich registrieren und anmelden, um auf ihre eigenen Habits und Logs zugreifen zu können.</li>
         </ul>
+
+    <h2>Anleitung</h2>
+    <p>Auf der Startseite kann man nach dem erfolgreichen Login, seine Habits erstellen. Dies indem man auf den Knopf "Add a new habit" klickt. Unter diesem Habit kann man dann Logs speichern, indem man dem Log benannt und speichert indem man unter "Add Log:" auf "Save" klickt. Zusätzlich kann unter "Edit this Habit" der Habit angepasst oder gelöscht werden.</p>
+
         </br></br>
+
 {% endblock %}
