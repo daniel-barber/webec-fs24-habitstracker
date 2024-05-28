@@ -1,10 +1,10 @@
 {% extends "layout/default" %}
 
 {% block title %}
-    404 - Page not found
+    Oh no! Looks like an error occurred.
 {% endblock %}
 
 {% block content %}
-    <h1>Nothing to look for here!</h1>
+    <h1>Oh no! Looks like an error occurred.</h1>
     <p>Sorry there has been an unexpected error.</p>
 {% endblock %}
