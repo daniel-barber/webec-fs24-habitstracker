@@ -38,6 +38,7 @@ public class HabitController {
         User currentUser = getCurrentUser();
         List<Habit> habits = this.habitRepository.findByUser(currentUser);
         model.addAttribute("habits", habits);
+        model.addAttribute("username", currentUser.getUsername());
         return "habit/index";
     }
 
