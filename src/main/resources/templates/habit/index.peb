@@ -3,7 +3,7 @@
 
 {% block content %}
     <div class="top">
-    <h1 class="headings heading1">Habits</h1>
+    <h1 class="headings heading1">{{ username }}'s Habits</h1>
     <a href="{{ href('/habit/add') }}" class="link btn_big">Add a new Habit</a>
     </div>
     <div class="habits_list">
