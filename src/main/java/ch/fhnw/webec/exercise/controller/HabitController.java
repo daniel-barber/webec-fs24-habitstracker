@@ -1,5 +1,6 @@
 package ch.fhnw.webec.exercise.controller;
 
+import ch.fhnw.webec.exercise.exceptions.UserNotAuthenticatedException;
 import ch.fhnw.webec.exercise.model.Habit;
 import ch.fhnw.webec.exercise.model.Log;
 import ch.fhnw.webec.exercise.model.User;
@@ -45,10 +46,7 @@ public class HabitController {
         Habit habit = this.habitRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        User currentUser = getCurrentUser();
-        if (habit.getUser().getId() != currentUser.getId()) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-        }
+        checkUserOwnership(habit);
 
         model.addAttribute("habit", habit);
         return "habit/detail";
@@ -88,10 +86,7 @@ public class HabitController {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        User currentUser = getCurrentUser();
-        if (habit.getUser().getId() != currentUser.getId()) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-        }
+        checkUserOwnership(habit);
 
         model.addAttribute("habit", habit);
         return "habit/edit";
@@ -107,10 +102,7 @@ public class HabitController {
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
             // Ensure that the habit belongs to the logged-in user
-            User currentUser = getCurrentUser();
-            if (existingHabit.getUser().getId() != currentUser.getId()) {
-                throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-            }
+            checkUserOwnership(existingHabit);
 
             // Update the existing habit's properties
             existingHabit.setName(habit.getName());
@@ -137,10 +129,7 @@ public class HabitController {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        User currentUser = getCurrentUser();
-        if (habit.getUser().getId() != currentUser.getId()) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-        }
+        checkUserOwnership(habit);
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("habit", habit);
@@ -167,10 +156,7 @@ public class HabitController {
             .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
 
         // Ensure that the habit belongs to the logged-in user
-        User currentUser = getCurrentUser();
-        if (habit.getUser().getId() != currentUser.getId()) {
-            throw new ResponseStatusException(HttpStatus.FORBIDDEN);
-        }
+        checkUserOwnership(habit);
 
         this.habitRepository.delete(habit);
         return "redirect:/";
@@ -179,6 +165,13 @@ public class HabitController {
     private User getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return (User) authentication.getPrincipal();
+    }
+
+    private void checkUserOwnership(Habit habit) {
+        User currentUser = getCurrentUser();
+        if (habit.getUser().getId() != currentUser.getId()) {
+            throw new UserNotAuthenticatedException("Habit does not belong to the current user");
+        }
     }
 
 }
