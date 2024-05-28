@@ -11,10 +11,10 @@
             <a href="{{ href('/habit/' + habit.id) }}" class="link">
                 <div class="habits_tile">
                     <strong class="habits_title">
-                        {{ habit.name }}
+                        {{ habit.name | abbreviate(20) }}
                     </strong>
                     <p class="habits_description">
-                        {{ habit.description | abbreviate(100) }}
+                        {{ habit.description | abbreviate(120) }}
                     </p>
                 </div>
             </a>
