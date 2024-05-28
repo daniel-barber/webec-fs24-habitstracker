@@ -134,7 +134,7 @@ public class HabitController {
         if (bindingResult.hasErrors()) {
             model.addAttribute("habit", habit);
             model.addAttribute("log", log);
-            return "/habit/" + habit.getId();
+            return "/habit/detail";
         } else {
             log.setHabit(habit);
             try {
@@ -143,7 +143,9 @@ public class HabitController {
                 System.err.println("Error saving log: " + e.getMessage());
                 e.printStackTrace();
                 model.addAttribute("errorMessage", "Error saving log: " + e.getMessage());
-                return "redirect:/habit/" + habit.getId();
+                model.addAttribute("habit", habit);
+                model.addAttribute("log", log);
+                return "/habit/" + habit.getId(); // Stay on the current page
             }
             return "redirect:/habit/" + habit.getId();
         }
