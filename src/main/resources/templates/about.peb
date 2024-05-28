@@ -13,11 +13,11 @@
     </ul>
 
     <h2>Projektbeschreibung</h2>
-        <p>Wir haben einen Habit-Tracker erstellt, der es Benutzern ermöglicht, ihre Gewohnheiten zu verfolgen. Hier sind die Hauptfunktionen:</p>
+        <p>Das Ziel dieses Projektes ist es, einen Habit-Tracker zu entwickeln, der den Nutzern hilft, ihre Gewohnheiten zu verfolgen und positive Veränderungen in ihrem Leben zu fördern. Die Hauptfunktionen sind die Registrierung und das Login, um den Benutzern ein eigenes Konto zu ermöglichen, die Erstellung eigener Gewohnheiten, die getrackt werden sollen, und die Erstellung von Log-Einträgen innerhalb der Gewohnheiten, um die Einhaltung der Gewohnheiten pro Gewohnheit zu dokumentieren.</p>
 
     <h2>Entities:</h2>
         <ul>
-            <li><strong>User: </strong>Ein User kann sich registrieren, einloggen und auf sein persönliches Dashboard zugreifen.Jeder User hat eine eindeutige ID, Username und Passwort.</li></br>
+            <li><strong>User: </strong>Ein User kann sich registrieren, einloggen und auf sein persönliches Dashboard zugreifen. Jeder User hat eine eindeutige ID, Username und Passwort.</li></br>
             <li><strong>Habit: </strong>Habits sind Aktivitäten oder Ziele, die Benutzer verfolgen möchten. Diese können selber mit Titel und Beschreibung definiert werden. Beispiele für Habits: "Tägliches Laufen", "Wasser trinken", "Buch lesen". Ein User kann mehrere Habits haben und ein Habit kann mehrere Log-Einträge haben.</li></br>
             <li><strong>Log: </strong>Ein Log-Eintrag gehört zu einem User und einem bestimmten Habit. Jeder Log-Eintrag enthält Informationen wie Datum, Zeit und Textfeld, um den Fortschritt des Habits zu dokumentieren.</li>
         </ul>
@@ -27,7 +27,7 @@
         <p>Unser Fokus liegt auf folgenden Technologien:</p>
         <ul>
             <li><strong>CSS Responsive Design:</strong> Wir möchten sicherstellen, dass unsere Webanwendung auf verschiedenen Geräten und Bildschirmgrößen gut aussieht.</li> </br>
-            <li><strong>Authentifizierung:</strong> Benutzer müssen sich anmelden, um auf ihre Daten zuzugreifen.</li>
+            <li><strong>Authentifizierung:</strong> Benutzer müssen sich registrieren und anmelden, um auf ihre eigenen Habits und Logs zugreifen zu können.</li>
         </ul>
         </br></br>
 {% endblock %}
